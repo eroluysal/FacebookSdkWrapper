@@ -2,6 +2,8 @@
 
 namespace QweB\Facebook\Contracts;
 
+use QweB\Facebook\MissingRedirectUrlException;
+
 interface Factory
 {
     /**
@@ -29,4 +31,21 @@ interface Factory
      * @return \Facebook\Entities\AccessToken
      */
     public function getAccessToken();
+
+    /**
+     * Get the redirect url.
+     *
+     * @return string
+     *
+     * @throws MissingRedirectUrlException
+     */
+    public function getRedirectUrl();
+
+    /**
+     * Set the redirect url for login helper instance.
+     *
+     * @param  string  $redirectUrl
+     * @return self
+     */
+    public function setRedirectUrl($redirectUrl);
 }
