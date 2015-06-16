@@ -10,10 +10,7 @@
     "autoload": {
         "psr-4": {
             "QweB\\Facebook\\": "src/"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
+        }
     },
     "require": {
         "illuminate/support": "5.1.*",
