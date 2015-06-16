@@ -26,9 +26,9 @@ class FacebookServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bindShared('QweB\Facebook\Contracts\Factory', function ($app) {
-            $config = array_values($app['config']['facebook.application']);
+            $config = $app['config']['facebook.application'];
 
-            list($appId, $secret, $scopes) = $config;
+            list($appId, $secret, $scopes) = array_values($config);
 
             return new Factory($appId, $secret, $scopes);
         });
