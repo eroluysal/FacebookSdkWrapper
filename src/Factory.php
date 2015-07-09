@@ -57,9 +57,7 @@ class Factory implements FactoryContract
      */
     public function createRequest($method, $path, array $parameters = [])
     {
-        $session = $this->getSession();
-
-        $request = new FacebookRequest($session, $method, $path, $parameters);
+        $request = new FacebookRequest($this->getSession(), $method, $path, $parameters);
 
         return $request->execute();
     }
