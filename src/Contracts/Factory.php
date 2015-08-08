@@ -9,9 +9,10 @@ interface Factory
     /**
      * Create a new Facebook request with redirect session.
      *
-     * @param  string  $method
-     * @param  string  $path
-     * @param  array   $parameters
+     * @param string $method
+     * @param string $path
+     * @param array  $parameters
+     *
      * @return \Facebook\FacebookResponse
      */
     public function createRequest($method, $path, array $parameters = []);
@@ -20,7 +21,8 @@ interface Factory
      * Stores CSRF state and returns a URL to which the user should be sent to
      * in order to continue the login process with Facebook.
      *
-     * @param  array   $scopes
+     * @param array $scopes
+     *
      * @return string
      */
     public function getLoginUrl(array $scopes = []);
@@ -35,16 +37,17 @@ interface Factory
     /**
      * Get the redirect url.
      *
-     * @return string
-     *
      * @throws MissingRedirectUrlException
+     *
+     * @return string
      */
     public function getRedirectUrl();
 
     /**
      * Set the redirect url for login helper instance.
      *
-     * @param  string  $redirectUrl
+     * @param string $redirectUrl
+     *
      * @return self
      */
     public function setRedirectUrl($redirectUrl);
