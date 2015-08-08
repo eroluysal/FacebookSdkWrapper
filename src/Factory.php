@@ -2,9 +2,9 @@
 
 namespace QweB\Facebook;
 
-use Facebook\FacebookSession;
-use Facebook\FacebookRequest;
 use Facebook\FacebookRedirectLoginHelper;
+use Facebook\FacebookRequest;
+use Facebook\FacebookSession;
 use QweB\Facebook\Contracts\Factory as FactoryContract;
 
 class Factory implements FactoryContract
@@ -33,9 +33,10 @@ class Factory implements FactoryContract
     /**
      * Create a new Factory instance.
      *
-     * @param  string  $appId
-     * @param  string  $secret
-     * @param  array   $scopes
+     * @param string $appId
+     * @param string $secret
+     * @param array  $scopes
+     *
      * @return void
      */
     public function __construct($appId, $secret, array $scopes = [])
@@ -50,9 +51,10 @@ class Factory implements FactoryContract
     /**
      * Create a new Facebook request with redirect session.
      *
-     * @param  string  $method
-     * @param  string  $path
-     * @param  array   $parameters
+     * @param string $method
+     * @param string $path
+     * @param array  $parameters
+     *
      * @return \Facebook\FacebookResponse
      */
     public function createRequest($method, $path, array $parameters = [])
@@ -66,7 +68,8 @@ class Factory implements FactoryContract
      * Stores CSRF state and returns a URL to which the user should be sent to
      * in order to continue the login process with Facebook.
      *
-     * @param  array   $scopes
+     * @param array $scopes
+     *
      * @return string
      */
     public function getLoginUrl(array $scopes = [])
@@ -101,14 +104,14 @@ class Factory implements FactoryContract
     /**
      * Get the redirect url.
      *
-     * @return string
-     *
      * @throws MissingRedirectUrlException
+     *
+     * @return string
      */
     public function getRedirectUrl()
     {
         if (!$this->redirectUrl) {
-            throw new MissingRedirectUrlException;
+            throw new MissingRedirectUrlException();
         }
 
         return $this->redirectUrl;
@@ -117,7 +120,8 @@ class Factory implements FactoryContract
     /**
      * Set the redirect url for login helper instance.
      *
-     * @param  string  $redirectUrl
+     * @param string $redirectUrl
+     *
      * @return self
      */
     public function setRedirectUrl($redirectUrl)
@@ -130,7 +134,8 @@ class Factory implements FactoryContract
     /**
      * Get the scopes with given parameters.
      *
-     * @param  array|string  $scopes
+     * @param array|string $scopes
+     *
      * @return array
      */
     protected function getScopes($scopes = null)
@@ -141,7 +146,8 @@ class Factory implements FactoryContract
     /**
      * Set the new scopes.
      *
-     * @param  array  $scopes
+     * @param array $scopes
+     *
      * @return self
      */
     protected function setScopes(array $scopes)
@@ -164,22 +170,23 @@ class Factory implements FactoryContract
     /**
      * Start PHP Session for need Facebook SDK.
      *
-     * @return bool
-     *
      * @throws SessionStartException
+     *
+     * @return bool
      */
     protected function startPhpSession()
     {
         if (!@session_start()) {
-            throw new SessionStartException;
+            throw new SessionStartException();
         }
     }
 
     /**
      * Start the Facebook application session.
      *
-     * @param  string  $appId
-     * @param  string  $secret
+     * @param string $appId
+     * @param string $secret
+     *
      * @return void
      */
     protected function startFacebookApplication($appId, $secret)
